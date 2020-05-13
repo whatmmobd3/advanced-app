@@ -1,5 +1,5 @@
 import React from "react";
 
 export default () => {
-  return <div>Commnet Box</div>;
+  return <div>Box for Comment</div>;
 };

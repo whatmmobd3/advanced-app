@@ -22,6 +22,16 @@ it("has a text area that users can type in", () => {
     target: { value: "new comment" },
   });
   wrapped.update();
-  expect(wrapped.find("textarea").prop("value")).toEqual('new comment');
+  expect(wrapped.find("textarea").prop("value")).toEqual("new comment");
+});
+
+it("when form s submitted, text area gets emptied", () => {
+  wrapped.find("textarea").simulate("change", {
+    target: { value: "new comment" },
+  });
+  wrapped.update();
+  wrapped.find("form").simulate("submit");
+  wrapped.update();
+  expect(wrapped.find("textarea").prop("value")).toEqual("");
 
 });

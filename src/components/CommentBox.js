@@ -4,9 +4,11 @@ class App extends React.Component {
   state = {
     comment: "",
   };
+
   handleChange = (e) => {
     this.setState({ comment: e.target.value });
   };
+  
   handleSubmit = (e) => {
     e.preventDefault();
     this.setState({ comment: "" });

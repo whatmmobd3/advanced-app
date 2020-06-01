@@ -2,25 +2,28 @@ import React from "react";
 import CommentBox from "./CommentBox";
 import CommentList from "./CommentList";
 
-import { Route,Link } from "react-router-dom";
-import {connect} from "react-redux"
+import { Route, Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 class App extends React.Component {
-  renderButton(){
+  renderButton() {
     if (this.props.auth) {
-      return <button>Sign Out</button>
+      return <button>Sign Out</button>;
     }
-    return <button>Sign In</button>
-
+    return <button>Sign In</button>;
   }
-  renderHeader(){
-    return(
+  renderHeader() {
+    return (
       <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/post">Post a comment</Link></li>
-        <li>{this.renderButton}</li>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/post">Post a comment</Link>
+        </li>
+        <li>{this.renderButton()}</li>
       </ul>
-    )
+    );
   }
   render() {
     return (
@@ -32,8 +35,8 @@ class App extends React.Component {
     );
   }
 }
-function mapStateToProps(state){
-  return{auth:state.auth}
+function mapStateToProps(state) {
+  return { auth: state.auth };
 }
 
 export default connect(mapStateToProps)(App);

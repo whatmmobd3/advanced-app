@@ -9,7 +9,8 @@ export function saveComment(data) {
 }
 
 export function fetchComment() {
-  const response = axios.get("https://jsonplaceholder.typicode.com/comments");
+  // const response = axios.get("https://jsonplaceholder.typicode.com/comments");
+  const response = axios.get("http://swapi.dev/api/people/1/");
   return {
     type: FETCH_COMMENTS,
     payload: response,

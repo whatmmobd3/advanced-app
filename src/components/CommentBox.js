@@ -25,6 +25,9 @@ class App extends React.Component {
         <div>
           <button>Submit Comment</button>
         </div>
+        <div>
+          <button onClick={() => this.props.fetchComment()}>fetch Comment</button>
+        </div>
       </form>
     );
   }

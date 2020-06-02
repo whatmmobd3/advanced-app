@@ -1,25 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import * as actions from "../actions";
+import requireAuth from "./requireAuth";
 
 class App extends React.Component {
   state = {
     comment: "",
   };
-
-  componentDidMount() {
-    this.shouldNavigateAway();
-  }
-  componentDidUpdate() {
-    this.shouldNavigateAway();
-  }
-
-  shouldNavigateAway() {
-    if (!this.props.auth) {
-      alert("Need sign in")
-      this.props.history.push('/')
-    }
-  }
 
   handleChange = (e) => {
     this.setState({ comment: e.target.value });
@@ -43,7 +30,4 @@ class App extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return { auth: state.auth };
-}
-export default connect(mapStateToProps, actions)(App);
+export default connect(null, actions)(requireAuth(App));

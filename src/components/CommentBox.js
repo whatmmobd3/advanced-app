@@ -1,14 +1,30 @@
 import React from "react";
+import { connect } from "react-redux";
+import * as actions from "../actions";
 
 class App extends React.Component {
   state = {
     comment: "",
   };
 
+  componentDidMount() {
+    this.shouldNavigateAway();
+  }
+  componentDidUpdate() {
+    this.shouldNavigateAway();
+  }
+
+  shouldNavigateAway() {
+    if (!this.props.auth) {
+      alert("Need sign in")
+      this.props.history.push('/')
+    }
+  }
+
   handleChange = (e) => {
     this.setState({ comment: e.target.value });
   };
-  
+
   handleSubmit = (e) => {
     e.preventDefault();
     this.setState({ comment: "" });
@@ -26,4 +42,8 @@ class App extends React.Component {
     );
   }
 }
-export default App;
+
+function mapStateToProps(state) {
+  return { auth: state.auth };
+}
+export default connect(mapStateToProps, actions)(App);
